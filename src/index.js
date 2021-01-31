@@ -1,17 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from './react';
+import ReactDOM from './react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+// const element = <div className="title" style={{color: 'red'}}><span>hello</span> world</div>;
+// console.log(JSON.stringify(element,null,2));
+
+const element1 = React.createElement('div', {
+  'className': 'title',
+  'style':{
+    'color':'red'
+  }},
+  React.createElement('span',null,'hello'),'world'
+  );
+/*
+{"type":"div",
+  "props":{
+    "className":"title",
+    "style":{"color":"red"},
+    "children":"hello world"
+  }
+}
+* */
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  element1,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
