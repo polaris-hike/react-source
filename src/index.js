@@ -1,5 +1,5 @@
-import React from './react';
-import ReactDOM from './react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import './index.css';
 
 // const element = <div className="title" style={{color: 'red'}}><span>hello</span> world</div>;
@@ -32,12 +32,20 @@ class Counter extends React.Component {
   }
 
   handleClick = () => {
-    this.setState({
-      number: this.state.number + 1
-    });
+    this.setState((lastState)=>({number:lastState.number +1}));
+    console.log(this.state.number);
+    this.setState((lastState)=>({number:lastState.number +1}));
+    console.log(this.state.number);
+    // setTimeout(()=>{
+    //   this.setState((lastState)=>({number:lastState.number +1}));
+    //   console.log(this.state.number);
+    //   this.setState((lastState)=>({number:lastState.number +1}));
+    //   console.log(this.state.number);
+    // })
   };
 
   componentDidMount() {
+    return
     setInterval(() => {
       this.setState({
         number: this.state.number + 1
@@ -49,7 +57,7 @@ class Counter extends React.Component {
     return (
       <div>
         {this.state.number}
-        <button class="title" onClick={this.handleClick}>+1</button>
+        <button className="title" onClick={this.handleClick}>+1</button>
       </div>
     );
   }
